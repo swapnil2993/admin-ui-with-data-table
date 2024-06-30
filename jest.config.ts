@@ -2,6 +2,7 @@ export default {
   globals: {
     fetch: global.fetch,
   },
+  setupFilesAfterEnv: ["./src/setupTests.ts"],
   testEnvironment: "jsdom",
   transform: {
     "^.+\\.tsx?$": [
@@ -12,8 +13,10 @@ export default {
         },
       },
     ],
+    "\\.(svg)$": "<rootDir>/src/__mocks__/svgMock.ts",
   },
   moduleNameMapper: {
-    "\\.(css|less|sass|scss|svg)$": "identity-obj-proxy",
+    "\\.(css|less|sass|scss)$": "identity-obj-proxy",
+    "\\.(svg)$": "<rootDir>/src/__mocks__/svgMock.ts",
   },
 };

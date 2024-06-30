@@ -1,24 +1,13 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
+import mockData from "./__mocks__/mockData";
 import useUsersData from "./hooks";
 import { Role } from "./types";
 
-const mockUsers = [
-  { id: "1", name: "Alice", email: "email@email.com", role: "Admin" },
-  { id: "2", name: "Bob2", email: "Bob2@email.com", role: "Member" },
-  { id: "3", name: "Bob3", email: "Bob3@email.com", role: "Member" },
-  { id: "4", name: "Bob4", email: "Bob4@email.com", role: "Member" },
-  { id: "5", name: "Bob5", email: "Bob5@email.com", role: "Admin" },
-  { id: "6", name: "Bob6", email: "Bob6@email.com", role: "Member" },
-  { id: "7", name: "Bob7", email: "Bob6@email.com", role: "Admin" },
-  { id: "8", name: "Bob8", email: "Bob8@email.com", role: "Member" },
-  { id: "9", name: "Bob9", email: "Bob9@email.com", role: "Member" },
-  { id: "10", name: "Bob10", email: "Bob10@email.com", role: "Member" },
-  { id: "11", name: "Bob11", email: "Bob11@email.com", role: "Member" },
-];
+const mockUsers = [...mockData];
 
 describe("useUsersData", () => {
   beforeEach(() => {
-    jest.spyOn(global, "fetch").mockResolvedValue({
+    global.fetch = jest.fn().mockResolvedValue({
       json: async () => mockUsers,
       ok: true,
     } as Response);
@@ -32,6 +21,10 @@ describe("useUsersData", () => {
     const { result } = renderHook(() => useUsersData());
     await waitFor(() => expect(result.current.isLoading).toBeFalsy());
     expect(result.current.users).toHaveLength(10);
+    expect(result.current.error).toBeNull();
+    expect(result.current.searchQuery).toEqual("");
+    expect(result.current.itemsPerPage).toEqual(10);
+    expect(result.current.totalPages).toEqual(2);
   });
 
   it("should update search query and filter users", async () => {
@@ -41,6 +34,9 @@ describe("useUsersData", () => {
     });
 
     await waitFor(() => expect(result.current.users).toHaveLength(1));
+    expect(result.current.searchQuery).toEqual("Alice");
+    expect(result.current.itemsPerPage).toEqual(10);
+    expect(result.current.totalPages).toEqual(1);
   });
 
   it("should delete users by ids", async () => {
@@ -50,6 +46,7 @@ describe("useUsersData", () => {
       result.current.deleteUserByIds(["1", "2"]);
     });
     expect(result.current.users).toHaveLength(9);
+    expect(result.current.totalPages).toEqual(1);
   });
 
   it("should update a user", async () => {
@@ -64,6 +61,32 @@ describe("useUsersData", () => {
     act(() => {
       result.current.updateUser(updatedUser);
     });
-    expect(result.current.users[0].name).toEqual(updatedUser.name);
+    expect(result.current.users[0]).toEqual(updatedUser);
+  });
+
+  it("should update current page and paginate users", async () => {
+    const { result } = renderHook(() => useUsersData());
+    act(() => {
+      result.current.paginate(2);
+    });
+    await waitFor(() => {
+      expect(result.current.isLoading).toBeFalsy();
+    });
+    expect(result.current.currentPage).toBe(2);
+    expect(result.current.users).toHaveLength(1);
+  });
+
+  it("should set error on api call failure", async () => {
+    global.fetch = jest.fn().mockResolvedValue({
+      json: async () => mockUsers,
+      ok: false,
+    } as Response);
+    const { result } = renderHook(() => useUsersData());
+    await waitFor(() => {
+      expect(result.current.isLoading).toBeFalsy();
+    });
+    expect(result.current.error).toEqual(
+      new Error("Failed to fetch users data")
+    );
   });
 });

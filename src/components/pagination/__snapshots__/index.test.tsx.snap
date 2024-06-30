@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination renders correctly 1`] = `
+<div>
+  <nav
+    class="pagination-wrapper"
+  >
+    <div
+      class="pagination"
+    >
+      <button
+        class="page-btn-skip"
+        disabled=""
+      >
+        &lt;&lt;
+      </button>
+      <button
+        class="page-btn-skip"
+        disabled=""
+      >
+        &lt;
+      </button>
+      <button
+        class="page-btn active"
+      >
+        1
+      </button>
+      <button
+        class="page-btn"
+      >
+        2
+      </button>
+      <button
+        class="page-btn"
+      >
+        3
+      </button>
+      <button
+        class="page-btn"
+      >
+        4
+      </button>
+      <button
+        class="page-btn"
+      >
+        5
+      </button>
+      <button
+        class="page-btn-skip"
+      >
+        &gt;
+      </button>
+      <button
+        class="page-btn-skip"
+      >
+        &gt;&gt;
+      </button>
+    </div>
+  </nav>
+</div>
+`;

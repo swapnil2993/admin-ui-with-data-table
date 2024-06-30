@@ -8,7 +8,9 @@ type SearchProps = {
 const Search = ({ query, handleSearch }: SearchProps) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleSearch(e.currentTarget.value);
+    if (query) {
+      handleSearch(query);
+    }
   };
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {

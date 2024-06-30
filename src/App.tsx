@@ -1,11 +1,11 @@
 import { TriangleAlert } from "lucide-react";
 import "./app.scss";
-import loaderUrl from "./assets/loader.svg";
 import Header from "./components/header";
 import Pagination from "./components/pagination";
 import Search from "./components/search";
 import Table from "./components/table";
 import useUsersData from "./hooks";
+import loaderUrl from "./loader.svg";
 
 function App() {
   const {
