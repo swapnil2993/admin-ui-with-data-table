@@ -1,0 +1,98 @@
+.table-wrapper {
+  background: black;
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    color: #979595;
+  }
+
+  td,
+  th {
+    padding: 12px 8px;
+    text-align: left;
+  }
+
+  th {
+    border-bottom: 1px solid #818080;
+  }
+
+  .record {
+    border-bottom: 0.2px solid #363636;
+    &:last-child {
+      border-bottom: 1px solid #818080;
+    }
+
+    &:hover {
+      background-color: #363636;
+    }
+
+    .checked-cell {
+      width: 5%;
+    }
+
+    .name-cell {
+      width: 30%;
+    }
+
+    .email-cell {
+      width: 35%;
+    }
+
+    .role-cell {
+      width: 20%;
+      text-transform: capitalize;
+    }
+
+    .input-cell {
+      padding: 8px;
+      width: 80%;
+    }
+
+    .select-cell {
+      padding: 8px;
+      width: 80%;
+    }
+
+    .actions-cell {
+      width: 10%;
+      text-align: center;
+    }
+
+    .no-data-cell {
+      text-align: center;
+      width: 100%;
+      padding: 12px 8px;
+    }
+
+    .actions {
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+
+      button {
+        background-color: transparent;
+        border: none;
+        padding: 6px;
+
+        &:hover {
+          background-color: #ffffff;
+          color: black;
+          border-radius: 50%;
+        }
+
+        &:disabled {
+          cursor: not-allowed;
+        }
+
+        svg {
+          cursor: pointer;
+          color: #979595;
+          &:hover {
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}
