@@ -6,13 +6,14 @@ export type SelectProps = {
 
 const Select = ({ role, handleChange, options }: SelectProps) => {
   return (
-    <select className="select-cell" onChange={handleChange} name="role">
+    <select
+      className="select-cell"
+      onChange={handleChange}
+      name="role"
+      value={role}
+    >
       {options.map((option) => (
-        <option
-          key={option.value}
-          value={option.value}
-          selected={role === option.value}
-        >
+        <option key={option.value} value={option.value}>
           {option.name}
         </option>
       ))}

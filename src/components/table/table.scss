@@ -74,23 +74,27 @@
         background-color: transparent;
         border: none;
         padding: 6px;
+        border-radius: 50%;
+        color: #979595;
+
+        svg {
+          cursor: pointer;
+          color: inherit;
+          background-color: inherit;
+        }
 
         &:hover {
           background-color: #ffffff;
           color: black;
-          border-radius: 50%;
+        }
+
+        &:focus {
+          color: white;
+          background-color: black;
         }
 
         &:disabled {
           cursor: not-allowed;
-        }
-
-        svg {
-          cursor: pointer;
-          color: #979595;
-          &:hover {
-            color: black;
-          }
         }
       }
     }

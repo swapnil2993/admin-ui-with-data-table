@@ -54,7 +54,11 @@ const Table = ({
         <thead>
           <tr>
             <th className="checked-cell">
-              <Checkbox checked={isAllSelected} onChange={toggleAllUsers} />
+              <Checkbox
+                checked={isAllSelected}
+                data-testid="select-all"
+                onChange={toggleAllUsers}
+              />
             </th>
             <th className="name-cell">Name</th>
             <th className="email-cell">Email</th>

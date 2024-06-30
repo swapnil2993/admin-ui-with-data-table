@@ -59,6 +59,7 @@ const Row = ({
         classes="name-cell"
         value={editableUser.name}
         inputProps={{
+          "aria-label": "name",
           value: editableUser.name,
           onChange: handleInputChange,
           className: "input-cell",
@@ -71,6 +72,7 @@ const Row = ({
         classes="email-cell"
         value={editableUser.email}
         inputProps={{
+          "aria-label": "email",
           value: editableUser.email,
           onChange: handleInputChange,
           className: "input-cell",
@@ -92,15 +94,15 @@ const Row = ({
       <td className="actions-cell">
         <div className="actions">
           {edit ? (
-            <button onClick={handleSave}>
+            <button onClick={handleSave} aria-label="save">
               <Save size={20} strokeWidth={1} absoluteStrokeWidth />
             </button>
           ) : (
-            <button onClick={() => setEdit(true)}>
+            <button onClick={() => setEdit(true)} aria-label="edit">
               <Pencil size={20} strokeWidth={1} absoluteStrokeWidth />
             </button>
           )}
-          <button onClick={() => handleDelete([user.id])}>
+          <button onClick={() => handleDelete([user.id])} aria-label="delete">
             <Trash size={20} strokeWidth={1} absoluteStrokeWidth />
           </button>
         </div>
