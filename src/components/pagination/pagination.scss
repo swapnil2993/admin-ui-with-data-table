@@ -13,14 +13,14 @@
       border-radius: 50%;
       color: #eeeeee;
       background-color: transparent;
-      border: 0.25px solid #eeeeee;
+      border: 1px solid #eeeeee;
       width: 32px;
       height: 32px;
       cursor: pointer;
       text-align: center;
       text-decoration: none;
       &:disabled {
-        border: 0.25px solid #cfcfcf;
+        border: 1px solid #cfcfcf;
         color: #cfcfcf;
         cursor: not-allowed;
       }
