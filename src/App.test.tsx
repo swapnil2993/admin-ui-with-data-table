@@ -85,7 +85,7 @@ describe("App", () => {
       selectedUserIds: ["1"],
     });
     render(<App />);
-    const deleteButton = screen.getByRole("button", { name: /Delete/i });
+    const deleteButton = screen.getByTestId("bulk-delete");
     fireEvent.click(deleteButton);
     expect(mockData.handleBulkDelete).toHaveBeenCalled();
   });

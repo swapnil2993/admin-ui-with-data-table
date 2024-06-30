@@ -49,7 +49,11 @@ function App() {
             />
             {selectedUserIds.length ? (
               <div className="delete-container">
-                <button className="delete-btn" onClick={handleBulkDelete}>
+                <button
+                  data-testid="bulk-delete"
+                  className="delete-btn"
+                  onClick={handleBulkDelete}
+                >
                   Delete
                 </button>
                 <span>
