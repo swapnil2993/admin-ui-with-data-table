@@ -54,15 +54,10 @@ function App() {
                   className="delete-btn"
                   onClick={handleBulkDelete}
                 >
-                  Delete
+                  Delete Selected
                 </button>
-                <span>
-                  <span>&#42;</span>
-                  <em>{`Selected ${selectedUserIds.length} users will be deleted`}</em>
-                </span>
               </div>
             ) : null}
-
             {totalPages > 0 && (
               <Pagination
                 totalPages={totalPages}

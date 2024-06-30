@@ -17,7 +17,7 @@ const Pagination = ({ totalPages, paginate, currentPage }: PaginationProps) => {
       <div className="pagination">
         <button
           disabled={currentPage === 1}
-          className="page-btn-skip"
+          className="page-btn-skip first-page"
           onClick={() => paginate(1)}
         >
           {`<<`}
@@ -25,7 +25,7 @@ const Pagination = ({ totalPages, paginate, currentPage }: PaginationProps) => {
 
         <button
           disabled={currentPage === 1}
-          className="page-btn-skip"
+          className="page-btn-skip previous-page"
           onClick={() => paginate(currentPage - 1)}
         >
           {`<`}
@@ -43,7 +43,7 @@ const Pagination = ({ totalPages, paginate, currentPage }: PaginationProps) => {
 
         <button
           disabled={currentPage === totalPages}
-          className="page-btn-skip"
+          className="page-btn-skip next-page"
           onClick={() => paginate(currentPage + 1)}
         >
           {`>`}
@@ -51,7 +51,7 @@ const Pagination = ({ totalPages, paginate, currentPage }: PaginationProps) => {
 
         <button
           disabled={currentPage === totalPages}
-          className="page-btn-skip"
+          className="page-btn-skip last-page"
           onClick={() => paginate(totalPages)}
         >
           {`>>`}

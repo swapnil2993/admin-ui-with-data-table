@@ -50,9 +50,13 @@ const Row = ({
   }, [editableUser, updateUser]);
 
   return (
-    <tr className="record">
+    <tr className={`record ${isSelected ? "selected" : ""}`}>
       <td className="checked-cell">
-        <Checkbox checked={isSelected} onChange={handleCheckboxChange} />
+        <Checkbox
+          checked={isSelected}
+          onChange={handleCheckboxChange}
+          disabled={edit}
+        />
       </td>
       <EditableCell
         isEditable={edit}
@@ -94,15 +98,24 @@ const Row = ({
       <td className="actions-cell">
         <div className="actions">
           {edit ? (
-            <button onClick={handleSave} aria-label="save">
+            <button onClick={handleSave} aria-label="save" className="save">
               <Save size={20} strokeWidth={1} absoluteStrokeWidth />
             </button>
           ) : (
-            <button onClick={() => setEdit(true)} aria-label="edit">
+            <button
+              onClick={() => setEdit(true)}
+              aria-label="edit"
+              className="edit"
+            >
               <Pencil size={20} strokeWidth={1} absoluteStrokeWidth />
             </button>
           )}
-          <button onClick={() => handleDelete([user.id])} aria-label="delete">
+          <button
+            onClick={() => handleDelete([user.id])}
+            aria-label="delete"
+            className="delete"
+            disabled={edit}
+          >
             <Trash size={20} strokeWidth={1} absoluteStrokeWidth />
           </button>
         </div>

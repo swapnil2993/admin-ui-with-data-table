@@ -9,13 +9,13 @@ exports[`Pagination renders correctly 1`] = `
       class="pagination"
     >
       <button
-        class="page-btn-skip"
+        class="page-btn-skip first-page"
         disabled=""
       >
         &lt;&lt;
       </button>
       <button
-        class="page-btn-skip"
+        class="page-btn-skip previous-page"
         disabled=""
       >
         &lt;
@@ -46,12 +46,12 @@ exports[`Pagination renders correctly 1`] = `
         5
       </button>
       <button
-        class="page-btn-skip"
+        class="page-btn-skip next-page"
       >
         &gt;
       </button>
       <button
-        class="page-btn-skip"
+        class="page-btn-skip last-page"
       >
         &gt;&gt;
       </button>
