@@ -9,11 +9,6 @@ const user: User = {
   role: "admin" as Role,
 };
 
-const options = [
-  { name: "Admin", value: "admin" },
-  { name: "Member", value: "member" },
-];
-
 describe("Row", () => {
   let handleDelete: jest.Mock;
   let handleSelect: jest.Mock;

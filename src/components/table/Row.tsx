@@ -35,7 +35,9 @@ const Row = ({
   );
 
   const handleInputChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    <T extends HTMLInputElement | HTMLSelectElement>(
+      e: React.ChangeEvent<T>
+    ) => {
       setEditableUser((prevState) => ({
         ...prevState,
         [e.target.name]: e.target.value,
@@ -82,6 +84,7 @@ const Row = ({
           className: "input-cell",
           required: true,
           name: "email",
+          type: "email",
         }}
       />
 

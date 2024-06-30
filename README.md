@@ -1,5 +1,39 @@
 # Data Table
 
+## **Install and Run Locally**
+
+```
+$ git clone https://github.com/swapnil2993/admin-ui-with-data-table
+$ cd admin-ui-with-data-table
+$ npm install
+$ npm start
+```
+
+## **Testing**
+
+```
+$ npm run test
+```
+
+## **Build and preview**
+
+You may run npm run build command to build the app.
+
+```
+$ npm run build
+```
+
+By default, the build output will be placed at dist. You may deploy this dist folder to any of your preferred platforms.
+
+Once you've built the app, you may test it locally by running npm run preview command.
+
+```
+$ npm run preview
+```
+
+The vite preview command will boot up a local static web server that serves the files from dist at http://localhost:4173.<br>
+It's an easy way to check if the production build looks OK in your local environment.
+
 ## Requirements
 
 - [x] Column titles must stand out from the entries.
@@ -18,7 +52,3 @@
 
 - Jest, Testing Library, and related dependencies for unit testing.
 - React-Lucide for icons
-
-### Thought Process
-
-

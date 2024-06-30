@@ -67,7 +67,8 @@ const useUsersData = () => {
 
         const data: User[] = await response.json();
         dispatch({ type: "FETCH_USERS_SUCCESS", payload: data });
-      } catch (err: unknown) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (err: any) {
         dispatch({ type: "FETCH_USERS_FAILURE", payload: err });
       }
     };
