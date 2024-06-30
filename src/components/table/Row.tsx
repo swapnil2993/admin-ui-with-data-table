@@ -1,7 +1,16 @@
 import { Pencil, Save, Trash } from "lucide-react";
 import { useCallback, useState } from "react";
+import { User } from "../../types";
 import Checkbox from "../checkbox";
 import EditableCell, { EditableSelectCell } from "./EditableCell";
+
+type RowDataProps = {
+  user: User;
+  handleDelete: (ids: string[]) => void;
+  handleSelect: (id: string, checked: boolean) => void;
+  isSelected: boolean;
+  updateUser: (updatedUser: User) => void;
+};
 
 const options = [
   { name: "Admin", value: "admin" },
@@ -15,22 +24,25 @@ const Row = ({
   isSelected,
   updateUser,
 }: RowDataProps) => {
-  const [edit, setEdit] = useState(false);
-  const [editableUser, setEditableUser] = useState(user);
+  const [edit, setEdit] = useState<boolean>(false);
+  const [editableUser, setEditableUser] = useState<User>(user);
 
   const handleCheckboxChange = useCallback(
-    (e) => {
+    (e: React.ChangeEvent<HTMLInputElement>) => {
       handleSelect(user.id, e.target.checked);
     },
     [handleSelect, user.id]
   );
 
-  const handleInputChange = useCallback((e) => {
-    setEditableUser((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
-  }, []);
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+      setEditableUser((prevState) => ({
+        ...prevState,
+        [e.target.name]: e.target.value,
+      }));
+    },
+    []
+  );
 
   const handleSave = useCallback(() => {
     updateUser(editableUser);

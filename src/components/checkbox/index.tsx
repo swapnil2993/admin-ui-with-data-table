@@ -1,6 +1,8 @@
 import "./checkbox.scss";
 
-const Checkbox = (inputProps) => {
+interface Props extends React.HTMLProps<HTMLInputElement> {}
+
+const Checkbox = (inputProps: Props) => {
   return <input type="checkbox" className="checkbox" {...inputProps} />;
 };
 

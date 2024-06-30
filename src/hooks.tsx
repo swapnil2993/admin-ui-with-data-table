@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useMemo, useReducer } from "react";
+import { Action, State, User } from "./types";
 
 const USERS_API_URL =
   "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json";
 
-const initialState = {
+const initialState: State = {
   users: [],
   isLoading: false,
   error: null,
@@ -13,7 +14,7 @@ const initialState = {
   selectedUserIds: [],
 };
 
-const reducer = (state, action) => {
+const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case "FETCH_USERS_REQUEST":
       return { ...state, isLoading: true, error: null };
@@ -64,9 +65,9 @@ const useUsersData = () => {
         const response = await fetch(USERS_API_URL);
         if (!response.ok) throw new Error("Failed to fetch users data");
 
-        const data = await response.json();
+        const data: User[] = await response.json();
         dispatch({ type: "FETCH_USERS_SUCCESS", payload: data });
-      } catch (err) {
+      } catch (err: unknown) {
         dispatch({ type: "FETCH_USERS_FAILURE", payload: err });
       }
     };
@@ -74,11 +75,11 @@ const useUsersData = () => {
     fetchUsers();
   }, []);
 
-  const deleteUserByIds = useCallback((ids) => {
+  const deleteUserByIds = useCallback((ids: string[]) => {
     dispatch({ type: "DELETE_USERS_BY_IDS", payload: ids });
   }, []);
 
-  const updateUser = useCallback((updatedUser) => {
+  const updateUser = useCallback((updatedUser: User) => {
     dispatch({ type: "UPDATE_USER", payload: updatedUser });
   }, []);
 
@@ -86,18 +87,18 @@ const useUsersData = () => {
     deleteUserByIds(selectedUserIds);
   }, [deleteUserByIds, selectedUserIds]);
 
-  const handleSetSelectedIds = useCallback((ids) => {
+  const handleSetSelectedIds = useCallback((ids: string[]) => {
     dispatch({
       type: "SET_SELECTED_USER_IDS",
       payload: Array.from(new Set(ids)),
     });
   }, []);
 
-  const handleSearchQueryChange = useCallback((query) => {
+  const handleSearchQueryChange = useCallback((query: string) => {
     dispatch({ type: "SET_SEARCH_QUERY", payload: query });
   }, []);
 
-  const paginate = useCallback((pageNumber) => {
+  const paginate = useCallback((pageNumber: number) => {
     dispatch({ type: "SET_CURRENT_PAGE", payload: pageNumber });
   }, []);
 

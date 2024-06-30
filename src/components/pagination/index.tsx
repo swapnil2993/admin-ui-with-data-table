@@ -1,6 +1,12 @@
 import "./pagination.scss";
 
-const Pagination = ({ totalPages, paginate, currentPage }) => {
+type PaginationProps = {
+  totalPages: number;
+  paginate: (arg: number) => void;
+  currentPage: number;
+};
+
+const Pagination = ({ totalPages, paginate, currentPage }: PaginationProps) => {
   const pageNumbers = Array.from(
     { length: totalPages },
     (_, index) => index + 1

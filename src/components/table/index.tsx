@@ -1,7 +1,16 @@
 import { useCallback, useMemo } from "react";
+import { User } from "../../types";
 import Checkbox from "../checkbox";
 import Row, { EmptyRow } from "./Row";
 import "./table.scss";
+
+type TableProps = {
+  data: User[];
+  handleDelete: (ids: string[]) => void;
+  handleRowSelect: (ids: string[]) => void;
+  selectedUsers: string[];
+  updateUser: (updatedUser: User) => void;
+};
 
 const Table = ({
   data,
@@ -9,7 +18,7 @@ const Table = ({
   handleRowSelect,
   selectedUsers,
   updateUser,
-}) => {
+}: TableProps) => {
   const allUserIds = useMemo(() => data.map((user) => user.id), [data]);
   const isAllSelected = useMemo(
     () =>
@@ -56,7 +65,7 @@ const Table = ({
         <tbody>
           {data.length > 0 ? (
             <>
-              {data.map((user) => (
+              {data.map((user: User) => (
                 <Row
                   handleDelete={handleDelete}
                   handleSelect={handleUserSelect}

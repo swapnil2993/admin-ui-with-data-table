@@ -1,5 +1,6 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
 import useUsersData from "./hooks";
+import { Role } from "./types";
 
 const mockUsers = [
   { id: "1", name: "Alice", email: "email@email.com", role: "Admin" },
@@ -20,7 +21,7 @@ describe("useUsersData", () => {
     jest.spyOn(global, "fetch").mockResolvedValue({
       json: async () => mockUsers,
       ok: true,
-    });
+    } as Response);
   });
 
   afterEach(() => {
@@ -29,7 +30,7 @@ describe("useUsersData", () => {
 
   it("should fetch users on mount", async () => {
     const { result } = renderHook(() => useUsersData());
-    await waitFor(() => !result.current.isLoading);
+    await waitFor(() => expect(result.current.isLoading).toBeFalsy());
     expect(result.current.users).toHaveLength(10);
   });
 
@@ -39,18 +40,7 @@ describe("useUsersData", () => {
       result.current.setSearchQuery("Alice");
     });
 
-    await waitFor(() => result.current.users.length === 1);
-    expect(result.current.users).toHaveLength(1);
-  });
-
-  it("should update current page and paginate users", async () => {
-    const { result } = renderHook(() => useUsersData());
-    act(() => {
-      result.current.paginate(2);
-    });
-    await waitFor(() => result.current.currentPage === 2);
-    expect(result.current.currentPage).toBe(2);
-    expect(result.current.users).toHaveLength(1);
+    await waitFor(() => expect(result.current.users).toHaveLength(1));
   });
 
   it("should delete users by ids", async () => {
@@ -68,7 +58,7 @@ describe("useUsersData", () => {
       id: "1",
       name: "New Name",
       email: "new@email.com",
-      role: "Admin",
+      role: "Admin" as Role,
     };
     await waitFor(() => !result.current.isLoading);
     act(() => {

@@ -1,6 +1,11 @@
 import "./search.scss";
 
-const Search = ({ query, handleSearch }) => {
+type SearchProps = {
+  query: string;
+  handleSearch: (value: string) => void;
+};
+
+const Search = ({ query, handleSearch }: SearchProps) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     handleSearch(e.currentTarget.value);
