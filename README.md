@@ -52,3 +52,10 @@ It's an easy way to check if the production build looks OK in your local environ
 
 - Jest, Testing Library, and related dependencies for unit testing.
 - React-Lucide for icons
+
+### Demo 
+[Demo Line](https://swapnil2993.github.io/admin-ui-with-data-table/)
+
+
+![Screenshot 2024-07-10 at 6 59 29 PM](https://github.com/swapnil2993/admin-ui-with-data-table/assets/6229452/33a659a5-33f8-4bc1-9d0e-108950de9bff)
+
