@@ -4,6 +4,7 @@ import sass from "sass";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/admin-ui-with-data-table/",
   plugins: [react()],
   css: {
     preprocessorOptions: {
