@@ -10,14 +10,6 @@ html {
   box-sizing: border-box;
 }
 
-button:focus,
-select:focus,
-input:focus {
-  outline: solid;
-  outline-width: 2px;
-  outline-color: white;
-}
-
 body {
   line-height: 1.4;
   margin: 0;
@@ -30,9 +22,7 @@ body {
 .container-wrapper {
   display: grid;
   grid-template-columns: 20% auto 20%;
-  grid-template-areas:
-    "header header header"
-    ". main .";
+  grid-template-areas: ". main .";
   gap: 20px;
   width: 100%;
 }
@@ -44,29 +34,4 @@ body {
   display: flex;
   flex-direction: column;
   gap: 16px;
-}
-
-.info-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.delete-container {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  .delete-btn {
-    background-color: transparent;
-    border: 1px solid #979595;
-    padding: 8px 20px;
-    cursor: pointer;
-    color: #979595;
-    &:hover {
-      color: black;
-      background-color: #eeeeee;
-    }
-  }
 }
