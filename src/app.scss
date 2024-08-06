@@ -16,7 +16,6 @@ body {
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
 }
 
 .container-wrapper {
@@ -30,7 +29,7 @@ body {
 .container {
   grid-area: main;
   padding: 24px 0;
-  color: #979595;
+
   display: flex;
   flex-direction: column;
   gap: 16px;
