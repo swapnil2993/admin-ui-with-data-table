@@ -1,10 +1,10 @@
-import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import sass from "sass";
+import { defineConfig } from "vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/admin-ui-with-data-table/",
+  base: "/",
   plugins: [react()],
   css: {
     preprocessorOptions: {
